@@ -70,7 +70,7 @@
 
 	Controlling congestion is a significant issue facing DSRC. At high traffic densities, many researchers have noted congestion problems including packet collisions and longer delays between successful receipt of packets. These collisions and delays compromise the effects of safety applications \cite{Subramanian2012}.
 	
-	BSM generation rate should be maintained at maximum possible level so that reliability is guaranteed [or close to guaranteed] \cite{Wenfeng2014}.  Pourmohammadi investigates fairness using power control and range control and two algorithms that do this \cite{Pourmohammadi2015}.  Wenfeng mentions that Xu and Barth a rate control method is used \cite{Wenfeng2014,Xu2004-2}.  Kolte gives an overview of different congestion control algorithms that have been proposed such as VeMAC, CCC-MAC and others as well as a proposed model for adaptive congestion control \cite{Kolte2014}.
+	The Basic Safety Message (BSM) generation rate should be maintained at the maximum possible level so that reliability is guaranteed [or close to guaranteed] \cite{Wenfeng2014}.  Pourmohammadi investigates fairness using power control and range control and two algorithms that do this \cite{Pourmohammadi2015}.  Wenfeng mentions that Xu and Barth a rate control method is used \cite{Wenfeng2014,Xu2004-2}.  Kolte gives an overview of different congestion control protocols that have been proposed such as VeMAC, CCC-MAC and others as well as a proposed model for adaptive congestion control \cite{Kolte2014}. \\
 
 	\subsection{Distributed Congestion Control}\label{sec:distributedcongestion}
 		Uhlemann talks about distributed congestion control and that ETSI proposes this in ITS-G5\cite{Uhlemann2015}.  ETSI PHY and MAC layer document \cite{ETSI-ES202663} points to ETSI Technical Specification for Decentralized Congestion Control document (ETSI TS 102 687) for this\cite{ETSI-TS102687}.  Aygun et. al propose a transmit power control and rate control, specifically ECPR (Environment and Context Aware Combined Power and Rate) Distributed Congestion Control for Vehicular Communications\cite{Aygun2015}.
@@ -79,7 +79,9 @@
 	Here is where reliability issues caused by collision are detailed.
 
 	\subsection{Hidden Terminals}\label{sec:hiddenterminal}
-		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}.
+		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}. \\
+		
+		Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing 
 		
 	\subsection{Bandwidth Coexistence}\label{sec:coexistence}
 		Some of the sources to use here are \cite{Lansford2013,Chang2013,Toyota2013,NTIA2013}
