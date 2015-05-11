@@ -72,6 +72,9 @@
 	
 	The Basic Safety Message (BSM) generation rate should be maintained at the maximum possible level so that reliability is guaranteed [or close to guaranteed] \cite{Wenfeng2014}.  Pourmohammadi investigates fairness using power control and range control and two algorithms that do this \cite{Pourmohammadi2015}.  Wenfeng mentions that Xu and Barth a rate control method is used \cite{Wenfeng2014,Xu2004-2}.  Kolte gives an overview of different congestion control protocols that have been proposed such as VeMAC, CCC-MAC and others as well as a proposed model for adaptive congestion control \cite{Kolte2014}. \\
 
+	\subsection{Channel Width}\label{sec:channelwidth}
+		\cite{Kenney2011} suggests that congestion control may be better addressed by utilizing 20 MHz channels instead of the 10 MHz channels DSRC is most often tested on. Then, the probability of a collision occurring diminishes because frames may be read at double the rate under certain schemes. However, the comes at the cost of the channels being more susceptible to noise. Further, the 10 MHz width is better suited for issues arising in vehicular environments, e.g. delay, and is more commonly used.
+	
 	\subsection{Hop Count}\label{sec:hopcount}
 		Most high-priority safety applications are based off one-hop broadcasts \cite{Omar2013}. 
 
@@ -82,12 +85,14 @@
 	One major reliability concern for safety message propagation in connected vehicles is packet loss due to collisions. When packets collide, they are lost and their data does not get transmitted, posing a hazard to drivers \cite{Hassan2011}. This section investigates problems stemming from collision and touches on the hidden terminal problem and the idea of bandwidth coexistence. 
 
 	\subsection{Hidden Terminals}\label{sec:hiddenterminal}
-		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}.  The reason for this is that the MAC as defined in 802.11p does not use Request-to-Send (RTS) and Clear-to-Send (CTS) messages and instead uses broadcast messages to send emergency and safety messages \cite[p. 969]{Rahman2014}. \\
+		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}.  The reason for this is that the MAC as defined in 802.11p does not use Request-to-Send (RTS) and Clear-to-Send (CTS) messages and instead uses broadcast messages to send emergency and safety messages \cite[p. 969]{Rahman2014}. 
 		
 		Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing to assign disjoint time slot sequences to vehicles traveling in opposing directions. Its aim in doing so is to decrease or eliminate collisions, increasing control channel throughput \cite{Omar2013}. This protocol would require each node to transmit data for each of its time slots, even if it is not utilizing a high-priority application \cite{Kolte2014}. 
 		
 		% TODO (Chris): Expand on ACC
 		Another protocol is Adaptive Congestion Control as proposed by \cite[p. 3]{Kolte2014}
+		
+		Although different MAC protocols have been suggested, the IEEE 802.11p standard for DSRC communication has adopted the 802.11 DCF MAC protocol \cite{Hassan2011}. 
 		
 	\subsection{Bandwidth Coexistence}\label{sec:coexistence}
 		Some of the sources to use here are \cite{Lansford2013,Chang2013,Toyota2013,NTIA2013}
