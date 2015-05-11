@@ -56,13 +56,15 @@
 		\item Congestion vs Collisions (at least in this paper)
 	\end{enumerate}
 	
-	% TODO (Chris): This paragraph is clunky and needs to be rewritten.
-	Wireless Access in Vehicular Environments (WAVE) and Dedicated Short-Range Communication (DSRC) are specified in IEEE Std. 1609 and IEEE Std 802.11p, respectively.  The IEEE Std. 1609.0-2010 describes the WAVE protocol stack using two planes, the management plane and the data plane \cite[p. 16]{IEEE2014-Std1609.0-2013}.  The data plane defines a shared set of physical (PHY), WAVE medium access control (MAC) and logical layer control (LLC) protocols as well a set of dual protocol stacks; the LLC and dual protocol stacks are defined in IEEE Std 1609.3 \cite[pp. 16--17]{IEEE2014-Std1609.0-2013}.  The first of the dual protocol stacks uses IPv6 and above layers (such as TCP and UDP) and the second of the stacks uses WAVE Short Message Protocol (WSMP) \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Both of these protocol stacks accept data from higher layer protocols for transport using their respective protocols and also take data received and transmit it to higher network layers \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Security features for WAVE are defined in IEEE Std. 1609.2 \cite{IEEE2013-Std1609.2-2013}.
+	\subsection{WAVE/DSRC Background}
+		% TODO (Chris): This paragraph is clunky and needs to be rewritten.
+		Wireless Access in Vehicular Environments (WAVE) and Dedicated Short-Range Communication (DSRC) are specified in IEEE Std. 1609 and IEEE Std 802.11p, respectively.  The IEEE Std. 1609.0-2010 describes the WAVE protocol stack using two planes, the management plane and the data plane \cite[p. 16]{IEEE2014-Std1609.0-2013}.  The data plane defines a shared set of physical (PHY), WAVE medium access control (MAC) and logical layer control (LLC) protocols as well a set of dual protocol stacks; the LLC and dual protocol stacks are defined in IEEE Std 1609.3 \cite[pp. 16--17]{IEEE2014-Std1609.0-2013}.  The first of the dual protocol stacks uses IPv6 and above layers (such as TCP and UDP) and the second of the stacks uses WAVE Short Message Protocol (WSMP) \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Both of these protocol stacks accept data from higher layer protocols for transport using their respective protocols and also take data received and transmit it to higher network layers \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Security features for WAVE are defined in IEEE Std. 1609.2 \cite{IEEE2013-Std1609.2-2013}.
 	
-	% TODO (Chris): Expand on DSRC more; we don't have access to ATSM ES2213, which seems to be the standard that defines DSRC
-	The DSRC protocol refers specifically to communication between two WAVE devices \cite{Serageldin2013}.  That is to say, DSRC is the ``ad hoc part of WAVE \cite[p. 9]{Uhlemann2015}.''
+		% TODO (Chris): Expand on DSRC more; we don't have access to ATSM ES2213, which seems to be the standard that defines DSRC
+		The DSRC protocol refers specifically to communication between two WAVE devices \cite{Serageldin2013}.  That is to say, DSRC is the ``ad hoc part of WAVE \cite[p. 9]{Uhlemann2015}.''
 	
-	In \cref{sec:congestion}, issues stemming from congestion and congestion control are discussed. \Cref{sec:collision} discusses reliability issues caused by collision and collision control.  The paper ends with conclusions in \cref{sec:conclusions}.
+	\subsection{Outline}
+		In \cref{sec:congestion}, issues stemming from congestion and congestion control are discussed. \Cref{sec:collision} discusses reliability issues caused by collision and collision control.  The paper ends with conclusions in \cref{sec:conclusions}.
 
 \section{Congestion Control}\label{sec:congestion}
 
