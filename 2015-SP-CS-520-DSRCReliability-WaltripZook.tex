@@ -81,7 +81,7 @@
 	\subsection{Hidden Terminals}\label{sec:hiddenterminal}
 		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}. \\
 		
-		Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing 
+		Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing to assign disjoint time slot sequences to vehicles traveling in opposing directions. Its aim in doing so is to decrease or eliminate collisions, increasing control channel throughput \cite{Omar2013}. This protocol would require each node to transmit data for each of its time slots, even if it is not utilizing a high-priority application \cite{Kolte2014}. 
 		
 	\subsection{Bandwidth Coexistence}\label{sec:coexistence}
 		Some of the sources to use here are \cite{Lansford2013,Chang2013,Toyota2013,NTIA2013}
