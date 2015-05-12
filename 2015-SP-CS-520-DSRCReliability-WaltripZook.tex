@@ -96,6 +96,9 @@
 		
 	\subsection{Bandwidth Coexistence}\label{sec:coexistence}
 		Some of the sources to use here are \cite{Lansford2013,Chang2013,Toyota2013,NTIA2013}
+		
+	\subsection{The Impact of Beacon Messages}\label{sec:beacons}
+		Different locales may send beacon messages to apprise vehicles of local status information. Unfortunately, these messages are sent out over the control channel at various intervals. Since safety applications use the control channel, the possibility exists that beacon messages may collide with safety messages and the resultant packet loss could potentially create a safety hazard \cite{Doukha2015}. \cite{Doukha2015} suggests a number of solutions to this threat including implementing a dynamic beacon sending rate which could send fewer beacon messages under potentially dangerous scenarios and better synchronizing when beacons are sent out.
 
 \section{Conclusions}\label{sec:conclusions}
 	Give a summary of the different things that were discussed in this paper.
