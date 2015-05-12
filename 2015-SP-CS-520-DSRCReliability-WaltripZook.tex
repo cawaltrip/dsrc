@@ -7,7 +7,7 @@
 % TODO (Chris): Change colorlinks back to false before submitting
 % PDF Metadata, Link Coloring
 \hypersetup{
-	pdftitle={Emergent Issues in Dedicated Short-Range Communication (DSRC) Reliability},
+	pdftitle={Emergent Reliability Issues in Dedicated Short-Range Communication (DSRC)},
 	pdfauthor={Chris Waltrip; Jared Zook},
 	pdfsubject={University of Idaho; CS-520: Graduate Paper},
 	pdfcreator={Chris Waltrip},
@@ -37,38 +37,22 @@
 	This paper aims to seek reliability issues facing emergent Intelligent Transportation System (ITS) technology utilizing Dedicated Short-Range Communication radios. These radios form Vehicular Ad Hoc Networks (VANETs) which are prone to issues unique to the highly-dynamic, low-latency, limited bandwidth environments wherein they operate. This paper discusses problems with congestion due to high traffic density, the hidden terminal problem, and the impact of high relative speeds of vehicles transmitting messages. Then, it suggests further directions research should focus on.
 \end{abstract}
 
-\section{Introduction and Background}
-\label{sec:introduction}
-	New wireless vehicular communication technology utilizing Dedicated Short-Range Communication (DSRC) allows for a host of new applications to make use of vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication \cite{Kenney2011}. Benefits of DSRC communication include allowing for a reduction in traffic accidents, an increase in transportation efficiency, and the creation of a new a market for vehicular applications. To provide for these benefits, it is necessary to ensure that the technology is reliable at the wireless and application level. From a technical standpoint, the most important area of focus on DSRC reliability is on the behavior of DSRC wireless communications \cite{Bai2006}. Under this scheme, nodes communicate with each other directly, forming what is referred to as a Vehicular Ad Hoc Network (VANETs) \cite{Uhlemann2015}. DSRC VANETs are created on-the-fly when transmitting nodes (i.e. vehicles or infrastructure) are in close proximity to each other. The unique nature of VANETs give rise to many reliability questions, such as traffic congestion \cite{Jabbarpour2014}. This paper will focus in on some notable reliability issues facing vehicular communication using DSRC and will suggest what means may be implemented to overcome them. \\
-
-	Some of the topics to be explored include:
-	\begin{enumerate}
-		\item Cooperative Intelligent Transport Systems - Two wireless technologies: DSRC and 3G
-		\item Distributed Congestion Control - ITS-G5 based on 802.11p; transmit \{rate,power,data rate\} control \cite{Uhlemann2015}
-		\item Collisions \cite{Wenfeng2014}
-	\end{enumerate}
-
-	% TODO (Chris): Define and expand on these terms.
-	A number of these topics are defined well in \cite{Serageldin2013}.
-	\begin{enumerate}
-		\item VANET
-		\item C-ITS
-		\item Congestion vs Collisions (at least in this paper)
-	\end{enumerate}
+\section{Introduction and Background}\label{sec:introduction}
+	New wireless vehicular communication technology utilizing Dedicated Short-Range Communication (DSRC) allows for a host of new applications to make use of vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication \cite{Kenney2011}. Benefits of DSRC communication include allowing for a reduction in traffic accidents, an increase in transportation efficiency, and the creation of a new a market for vehicular applications. To provide for these benefits, it is necessary to ensure that the technology is reliable at the wireless and application level. From a technical standpoint, the most important area of focus on DSRC reliability is on the behavior of DSRC wireless communications \cite{Bai2006}. Under this scheme, nodes communicate with each other directly, forming what is referred to as a Vehicular Ad Hoc Network (VANETs) \cite{Uhlemann2015}. DSRC VANETs are created on-the-fly when transmitting nodes (i.e. vehicles or infrastructure) are in close proximity to each other. The unique nature of VANETs give rise to many reliability questions, such as traffic congestion \cite{Jabbarpour2014}. This paper will focus in on some notable reliability issues facing vehicular communication using DSRC and will suggest what means may be implemented to overcome them.
 	
-	\subsection{WAVE/DSRC Background}
+	\subsection{WAVE/DSRC Background}\label{sec:wavedsrcbackground}
 		% TODO (Chris): This paragraph is clunky and needs to be rewritten.
 		Wireless Access in Vehicular Environments (WAVE) and Dedicated Short-Range Communication (DSRC) are specified in IEEE Std. 1609 and IEEE Std 802.11p, respectively.  The IEEE Std. 1609.0-2010 describes the WAVE protocol stack using two planes, the management plane and the data plane \cite[p. 16]{IEEE2014-Std1609.0-2013}.  The data plane defines a shared set of physical (PHY), WAVE medium access control (MAC) and logical layer control (LLC) protocols as well a set of dual protocol stacks; the LLC and dual protocol stacks are defined in IEEE Std 1609.3 \cite[pp. 16--17]{IEEE2014-Std1609.0-2013}.  The first of the dual protocol stacks uses IPv6 and above layers (such as TCP and UDP) and the second of the stacks uses WAVE Short Message Protocol (WSMP) \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Both of these protocol stacks accept data from higher layer protocols for transport using their respective protocols and also take data received and transmit it to higher network layers \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Security features for WAVE are defined in IEEE Std. 1609.2 \cite{IEEE2013-Std1609.2-2013}.
 	
-		% TODO (Chris): Expand on DSRC more; we don't have access to ATSM ES2213, which seems to be the standard that defines DSRC
 		DSRC was originally standardized by ASTM International in ASTM E2213-03, which is based on the Orthogonal Frequency Division Multiplexing (OFDM) PHY and Carrier Sense Multiple Access/Collision Avoidance (CSMA/CA) MAC of IEEE 802.11a \cite[p. 10]{Lansford2013}.  The automotive industry eventually formalized these standards by amending IEEE 802.11, resulting in 802.11p \cite[p. 10]{Lansford2013}.  While there weren't many changes at the PHY layer, the MAC layer was changed to focus on making sure that the time required in order for two devices to communicate was as low as possible \cite[p. 10]{Lansford2013}\cite{Serageldin2013}.  That is to say, DSRC is the ``ad hoc part of WAVE \cite[p. 9]{Uhlemann2015}.''
 	
-	\subsection{Outline}
-		In \cref{sec:congestion}, issues stemming from congestion and congestion control are discussed. \Cref{sec:collision} discusses reliability issues caused by collision and collision control.  The paper ends with conclusions in \cref{sec:conclusions}.
+	\subsection{Outline}\label{sec:outline}
+		In \cref{sec:congestioncollision}, issues stemming from collision and congestion are discussed. \Cref{sec:hiddenterminal} then focuses on the hidden terminal problem and various MAC protocols that have been proposed to solve it.  Then in \cref{sec:coexistence}, issues that would be caused by allowing unlicensed devices into the DSRC bandwidth are examined.  \Cref{sec:beacons} focuses on the impact of beacon messages interfering with Basic Safety Messages.  Finally, \cref{sec:conclusions} contains conclusions and an analysis of the way the current research topics interact with each other.
 
-\section{Congestion Control}\label{sec:congestion}
-
+\section{Congestion and Collision Control}\label{sec:congestioncollision}
 	Controlling congestion is a significant issue facing DSRC. At high traffic densities, many researchers have noted congestion problems including packet collisions and longer delays between successful receipt of packets. These collisions and delays compromise the effects of safety applications \cite{Subramanian2012}.
+	
+	One major reliability concern for safety message propagation in connected vehicles is packet loss due to collisions. When packets collide, they are lost and their data does not get transmitted, posing a hazard to drivers \cite{Hassan2011}. This section investigates problems stemming from collision and touches on the hidden terminal problem and the idea of bandwidth coexistence. 
 	
 	The Basic Safety Message (BSM) generation rate should be maintained at the maximum possible level so that reliability is guaranteed [or close to guaranteed] \cite{Wenfeng2014}.  Pourmohammadi investigates fairness using power control and range control and two algorithms that do this \cite{Pourmohammadi2015}.  Wenfeng mentions that Xu and Barth a rate control method is used \cite{Wenfeng2014,Xu2004-2}.  Kolte gives an overview of different congestion control protocols that have been proposed such as VeMAC, CCC-MAC and others as well as a proposed model for adaptive congestion control \cite{Kolte2014}. \\
 
@@ -84,25 +68,23 @@
 	\subsection{Visible Light Communication}\label{sec:visiblelightcommunication}
 		The unreliability of DSRC communication is pronounced in high traffic density situations, such as the ones found in busy cities and on highways where many radios will be transmitting simultaneously in close proximity. \cite{Cailean} suggests that the technology should be augmented with other technologies to increase reliability under congestion. They offer Visible Light Communication (VLC) as a good solution. VLC operates by sending data between vehicles using light sensors. This communication allows for a direct line of sight between vehicles that are in close range, e.g. in bumper-to-bumper traffic. However, VLC is negatively effected at longer ranges due to phenomena such as refraction where the emitted light will bounce off into an undesirable direction. When used in tandem with DSRC, the short-range benefits of VLC could offset the load on DSRC under heavy traffic by lessening the burden to send as many safety messages, dramatically reducing the congestion problem.
 
-\section{Collision Control}\label{sec:collision}
-	One major reliability concern for safety message propagation in connected vehicles is packet loss due to collisions. When packets collide, they are lost and their data does not get transmitted, posing a hazard to drivers \cite{Hassan2011}. This section investigates problems stemming from collision and touches on the hidden terminal problem and the idea of bandwidth coexistence. 
-
-	\subsection{Hidden Terminals}\label{sec:hiddenterminal}
+\section{Hidden Terminals}\label{sec:hiddenterminal}
 		During safety message transmission from one vehicle, other vehicles may move out of range of the sending vehicle, missing out on the safety information, thereby posing a threat to safety. Hidden terminals are vehicles that have moved out of this range, but still share the range with terminals in between them. Since safety messages use a single-hop, DSRC messages are particularly susceptible to this issue \cite{Ma2009}.  The reason for this is that the MAC as defined in 802.11p does not use Request-to-Send (RTS) and Clear-to-Send (CTS) messages and instead uses broadcast messages to send emergency and safety messages \cite[p. 969]{Rahman2014}. 
 		
-		Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing to assign disjoint time slot sequences to vehicles traveling in opposing directions. Its aim in doing so is to decrease or eliminate collisions, increasing control channel throughput \cite{Omar2013}. This protocol would require each node to transmit data for each of its time slots, even if it is not utilizing a high-priority application \cite{Kolte2014}. 
+		\subsection{VeMAC}\label{sec:vemac}
+			Some researchers have developed special MAC protocols for VANET situations in an effort to eliminate the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing to assign disjoint time slot sequences to vehicles traveling in opposing directions. Its aim in doing so is to decrease or eliminate collisions, increasing control channel throughput \cite{Omar2013}. This protocol would require each node to transmit data for each of its time slots, even if it is not utilizing a high-priority application \cite{Kolte2014}. 
 		
-		% TODO (Chris): Expand on ACC
-		Another protocol is Adaptive Congestion Control as proposed by \cite[p. 3]{Kolte2014}
+		\subsection{Adaptive Congestion Control}\label{sec:acc}
+			% TODO (Chris): Expand on ACC
+			Another protocol is Adaptive Congestion Control as proposed by \cite[p. 3]{Kolte2014}
 		
-		Although different MAC protocols have been suggested, the IEEE 802.11p standard for DSRC communication has adopted the 802.11 DCF MAC protocol \cite{Hassan2011}. 
+			Although different MAC protocols have been suggested, the IEEE 802.11p standard for DSRC communication has adopted the 802.11 DCF MAC protocol \cite{Hassan2011}. 
 		
-	\subsection{Bandwidth Coexistence}\label{sec:coexistence}
+\section{Bandwidth Coexistence}\label{sec:coexistence}
+		% TODO (Chris): Finish FCC timeline.  MENTION FCC!  
 		In September 2011, the Intelligent Transportation Services of America (ITSA) met with Congress to discuss bill that had been proposed that, if approved, would jeopardize the reliability of DSRC by opening up the 5.9 GHz bandwidth to unlicensed uses, such as from the 5.8 GHz 802.11a/n/ac (Wi-Fi) band \cite{ITSA2011,Lansford2013}.  It appears that telecommunications and non-automotive companies such as Time Warner Cable \cite[p. 13--14]{TWC2013}, Google, Microsoft \cite[p. 11]{MicrosoftGoogle2013} and Comcast \cite[p. 30]{Comcast2013} support the coexistence of Wi-Fi and DSRC, while the automotive community is nervous that the coexistence will be detrimental to the reliability of DSRC \cite[p. 16]{Toyota2013}.
-	
-		Some of the sources to use here are \cite{Lansford2013,Chang2013,Toyota2013,NTIA2013}
 		
-	\subsection{The Impact of Beacon Messages}\label{sec:beacons}
+\section{The Impact of Beacon Messages}\label{sec:beacons}
 		Different locales may send beacon messages to apprise vehicles of local status information. Unfortunately, these messages are sent out over the control channel at various intervals. Since safety applications use the control channel, the possibility exists that beacon messages may collide with safety messages and the resultant packet loss could potentially create a safety hazard \cite{Doukha2015}. \cite{Doukha2015} suggests a number of solutions to this threat including implementing a dynamic beacon sending rate which could send fewer beacon messages under potentially dangerous scenarios and better synchronizing when beacons are sent out.
 
 \section{Conclusions}\label{sec:conclusions}
