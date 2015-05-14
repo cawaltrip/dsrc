@@ -2,6 +2,7 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{hyperref}
 \usepackage[nameinlink]{cleveref}
+\usepackage{comment}
 
 % PDF Metadata, Link Coloring
 \hypersetup{
@@ -56,8 +57,10 @@
 	\subsection{Channel Width}\label{sec:channelwidth}
 		\cite{Kenney2011} suggests that congestion control may be better addressed by utilizing 20 MHz channels instead of the 10 MHz channels DSRC is most often tested on. Then, the probability of a collision occurring diminishes because frames may be read at double the rate under certain schemes. However, this comes at the cost of having the channels becoming more susceptible to noise, which could also compromise reliability. Further, the 10 MHz width is better suited for issues arising in vehicular environments, e.g. delay, and is more commonly used.
 
+	\begin{comment}
 	\subsection{Distributed Congestion Control}\label{sec:distributedcongestion}
 		Uhlemann talks about distributed congestion control and that ETSI proposes this in ITS-G5\cite{Uhlemann2015}.  ETSI PHY and MAC layer document \cite{ETSI-ES202663} points to ETSI Technical Specification for Decentralized Congestion Control document (ETSI TS 102 687) for this\cite{ETSI-TS102687}.  Aygun et. al propose a transmit power control and rate control, specifically ECPR (Environment and Context Aware Combined Power and Rate) Distributed Congestion Control for Vehicular Communications\cite{Aygun2015}.
+	\end{comment}
 		
 	\subsection{Visible Light Communication}\label{sec:visiblelightcommunication}
 		The unreliability of DSRC communication is pronounced in high traffic density situations, such as the ones found in busy cities and on highways where many radios will be transmitting simultaneously in close proximity \cite{Cailean2014}. \cite{Cailean2014} suggests that the technology should be augmented with other technologies to increase reliability under heavy packet transmission. They offer up Visible Light Communication (VLC) as a possible solution. VLC operates by sending data between vehicles using light rays and sensors. This communication allows for a direct line of sight between vehicles that are in close range, e.g. in bumper-to-bumper traffic, and thus a reliable link between them. However, VLC is negatively effected at longer ranges due to phenomena such as refraction where the emitted light will bounce off into an unintended direction. When used in tandem with DSRC, the short-range benefits of VLC could offset the load on DSRC under heavy traffic by lessening the burden to send as many safety messages, dramatically reducing the congestion problem.
