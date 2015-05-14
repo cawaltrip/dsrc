@@ -3,9 +3,6 @@
 \usepackage{hyperref}
 \usepackage[nameinlink]{cleveref}
 
-% TODO (Chris): Change all instances of Wi-Fi to WLAN?  It's probably a better way to describe U-NII devices.  The Park article refer to 10 MHz and 20 MHz devices as WAVE and WLAN respectively and this may be the best way to do it.
-
-% TODO (Chris): Change colorlinks back to false before submitting
 % PDF Metadata, Link Coloring
 \hypersetup{
 	pdftitle={Emergent Reliability Issues in Dedicated Short-Range Communication (DSRC)},
@@ -14,7 +11,7 @@
 	pdfcreator={Chris Waltrip},
 	pdfproducer={Chris Waltrip},
 	linktoc=all, 			% Link the section number, text and page number in Contents
-	colorlinks=true,        % Removes color frame and colors text instead
+	colorlinks=false,        % Removes color frame and colors text instead
 	linkcolor=ForestGreen,  % Default is red, may want to use black
 	citecolor=Bittersweet,  % Default is green
 	filecolor=Cyan,         % Default is cyan
@@ -41,7 +38,7 @@
 	New wireless vehicular communication technology utilizing Dedicated Short-Range Communication (DSRC) allows for a host of new applications to make use of vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication \cite{Kenney2011}. Benefits of DSRC communication include allowing for a reduction in traffic accidents, an increase in transportation efficiency, and the creation of a new a market for vehicular applications. To provide for these benefits, it is necessary to ensure that the technology is reliable at the wireless and application level. From a technical standpoint, the most important area of focus on DSRC reliability is on the behavior of DSRC wireless communications \cite{Bai2006}. Under this scheme, nodes communicate with each other directly, instead of to centralized stations, and form what is referred to as a Vehicular Ad Hoc Network (VANETs) \cite{Uhlemann2015}. DSRC VANETs are created on-the-fly when transmitting nodes (i.e. vehicles and/or infrastructure) are in close proximity to each other. The unique nature of VANETs give rise to many reliability questions, such as traffic congestion \cite{Jabbarpour2014}. This paper will focus in on some notable reliability issues facing vehicular communication using DSRC and will suggest what means may be implemented to overcome them.
 	
 	\subsection{WAVE/DSRC Background}\label{sec:wavedsrcbackground}
-		% TODO (Chris): This paragraph is clunky and needs to be rewritten.
+		% (Chris): This paragraph is clunky and needs to be rewritten.
 		Wireless Access in Vehicular Environments (WAVE) and Dedicated Short-Range Communication (DSRC) are specified in IEEE Std. 1609 and IEEE Std 802.11p, respectively.  The IEEE Std. 1609.0-2010 describes the WAVE protocol stack using two planes, the management plane and the data plane \cite[p. 16]{IEEE2014-Std1609.0-2013}.  The data plane defines a shared set of physical (PHY), WAVE medium access control (MAC) and logical layer control (LLC) protocols as well a set of dual protocol stacks; the LLC and dual protocol stacks are defined in IEEE Std 1609.3 \cite[pp. 16--17]{IEEE2014-Std1609.0-2013}.  The first of the dual protocol stacks uses IPv6 and above layers (such as TCP and UDP) and the second of the stacks uses WAVE Short Message Protocol (WSMP) \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Both of these protocol stacks accept data from higher layer protocols for transport using their respective protocols and also take data received and transmit it to higher network layers \cite[p. 9]{IEEE2010-Std1609.3-2010}.  Security features for WAVE are defined in IEEE Std. 1609.2 \cite{IEEE2013-Std1609.2-2013}.
 	
 		DSRC was originally standardized by ASTM International in ASTM E2213-03, which is based on the Orthogonal Frequency Division Multiplexing (OFDM) PHY and Carrier Sense Multiple Access/Collision Avoidance (CSMA/CA) MAC of IEEE 802.11a \cite[p. 10]{Lansford2013}.  The automotive industry eventually formalized these standards by amending IEEE 802.11, resulting in 802.11p \cite[p. 10]{Lansford2013}.  While there weren't many changes at the PHY layer, the MAC layer was changed to focus on making sure that the time required in order for two devices to communicate was as low as possible \cite[p. 10]{Lansford2013}\cite{Serageldin2013}.  That is to say, DSRC is the ``ad hoc part of WAVE \cite[p. 9]{Uhlemann2015}.''
@@ -71,22 +68,19 @@
 		\subsection{VeMAC}\label{sec:vemac}
 			Some researchers have developed special MAC protocols for VANET situations in an effort to solve the hidden terminal problem. One such protocol, VeMAC, uses multi-channel time-division multiplexing to assign disjoint time slot sequences to vehicles traveling in opposing directions. Its aim in doing so is to decrease or eliminate collisions, increasing control channel throughput and eliminating hidden terminals\cite{Omar2013}. This drawback of this protocol is that would require each node to transmit data for each of its time slots, even if it is not utilizing a high-priority application, increasing network congestion \cite{Kolte2014}. 
 		
-		\subsection{Adaptive Congestion Control}\label{sec:acc}
-			% TODO (Chris): Expand on ACC
-			Another protocol is Adaptive Congestion Control as proposed by \cite[p. 3]{Kolte2014}
-		
 		Although different MAC protocols have been suggested, the effective protocol in use is the 802.11 DCF MAC protocol which was adopted in the IEEE 802.11p standard for DSRC communication \cite{Hassan2011}.
 		
 \section{Bandwidth Coexistence}\label{sec:coexistence}
-		% TODO (Chris): Finish FCC timeline.  MENTION FCC!  
-		In September 2011, the Intelligent Transportation Services of America (ITSA) met with Congress to discuss bill that had been proposed that, if approved, would jeopardize the reliability of DSRC by opening up the 5.9 GHz bandwidth to unlicensed uses, such as from the 5.8 GHz 802.11a/n/ac (Wi-Fi) band \cite{ITSA2011,Lansford2013}.  In 2012, Congress requests that the FCC allow for unlicensed devices to be used in the DSRC range \cite{ITSA2014}.  They specifically request that the National Telecommunications \& Information Administration (NTIA) prepare a report about the methods for sharing bandwidth between DSRC and unlicensed Wi-Fi devices and risks to Federal users if this were allowed \cite{HR2012}.  
+		In September 2011, the Intelligent Transportation Services of America (ITSA) met with Congress to discuss bill that had been proposed that, if approved, would jeopardize the reliability of DSRC by opening up the 5.9 GHz bandwidth to unlicensed uses, such as from the 5.8 GHz 802.11a/n/ac (Wi-Fi) band \cite{ITSA2011,Lansford2013}.  In 2012, Congress requests that the FCC allow for unlicensed devices to be used in the DSRC range \cite{ITSA2014}.  They specifically request that the National Telecommunications \& Information Administration (NTIA) prepare a report about the methods for sharing bandwidth between DSRC and unlicensed WLAN devices and risks to Federal users if this were allowed \cite{HR2012}.  
 		
-		The NTIA report that was released in January 2013 found four risks that existed to DSRC.  Two of these risks are that current Wi-Fi and DSRC devices aren't developed to detect the signals of the other.  The third risk is that Wi-Fi devices are meant to have co-located transmitters and receivers that DSRC doesn't require and that the hidden terminal problem exists in DSRC.  The last risk is that Dynamic Frequency Selection (DFS), used in Wi-Fi devices may not be able to detect DSRC signals and may cause serious interference with the DSRC communication \cite[pp. 53--54]{NTIA2013}.  In response to this report, the Regulatory Standing Committee of the 802.11 working group creates the DSRC Coexistence Tiger Team to also evaluate reliability issues stemming from sharing bandwidth with Unlicensed National Information Infrastructure (U-NII) devices, which are devices used by 802.11a in the 5 GHz band \cite[p. 14]{Lansford2013}.  This team exploring the fundamental issue of how to share the bandwidth in a fair way considering that DSRC is to have priority over U-NII communications in the band \cite[p. 5]{Lansford2014}.
+		The NTIA report that was released in January 2013 found four risks that existed to DSRC.  Two of these risks are that current WLAN and DSRC devices aren't developed to detect the signals of the other.  The third risk is that WLAN devices are meant to have co-located transmitters and receivers that DSRC doesn't require and that the hidden terminal problem exists in DSRC.  The last risk is that Dynamic Frequency Selection (DFS), used in WLAN devices may not be able to detect DSRC signals and may cause serious interference with the DSRC communication \cite[pp. 53--54]{NTIA2013}.  In response to this report, the Regulatory Standing Committee of the 802.11 working group creates the DSRC Coexistence Tiger Team to also evaluate reliability issues stemming from sharing bandwidth with Unlicensed National Information Infrastructure (U-NII) devices, which are devices used by 802.11a in the 5 GHz band \cite[p. 14]{Lansford2013}.  This team exploring the fundamental issue of how to share the bandwidth in a fair way considering that DSRC is to have priority over U-NII communications in the band \cite[p. 5]{Lansford2014}.
 		
 		 It appears that telecommunications and non-automotive companies such as Time Warner Cable \cite[p. 13--14]{TWC2013}, Google, Microsoft \cite[p. 11]{MicrosoftGoogle2013} and Comcast \cite[p. 30]{Comcast2013} support the coexistence of Wi-Fi and DSRC, while the automotive community is nervous that the coexistence will be detrimental to the reliability of DSRC \cite[p. 16]{Toyota2013}.
 		 
 		 \subsection{Priority Reversal}
-		 \cite{Park2014} identifies a solution for solving the priority reversal issue between WAVE devices and U-NII-4 devices, which they refer to as WLAN devices.  The idea of priority revcersal is that a WLAN device near traveling vehicles is transmitting information.  A WAVE device in one vehicle notices and delays sending its own BSMs until it has space in the band to do so, which in turn means that other vehicles won't receive messages.  The WAVE device should have priority, but in this scenario the WLAN device does.  There is a solution to this problem that can be implemented within the 802.11 standard.  This involves the adjustment of the arbitration inter-frame spacing number (AIFSN) of the WLAN device.  Without adjustment of the AIFSN, a WLAN device can cause the time that it takes for a WAVE device to transmit a BSM to increase by a factor of 40.  By adjusting this number, \cite[p. 165]{Park2014} found the transmission time change due to the WLAN device becomes negligible.
+		 \cite{Park2014} identifies a solution for solving the priority reversal issue between WAVE devices and U-NII-4 devices, which they refer to as WLAN devices.  The idea of priority reversal is that a WLAN device near traveling vehicles is transmitting information.  A WAVE device in one vehicle notices and delays sending its own BSMs until it has space in the band to do so, which in turn means that other vehicles won't receive messages.  The WAVE device should have priority, but in this scenario the WLAN device does.  There is a solution to this problem that can be implemented within the 802.11 standard.  This involves the adjustment of the arbitration inter-frame spacing number (AIFSN) of the WLAN device.  Without adjustment of the AIFSN, a WLAN device can cause the time that it takes for a WAVE device to transmit a BSM to increase by a factor of 40.  By adjusting this number, found the transmission time change due to the WLAN device becomes negligible \cite[p. 165]{Park2014}.
+		 
+		 % TODO (Chris): Add hidden terminal information to this section
 		
 \section{The Impact of Beacon Messages}\label{sec:beacons}
 		Different locales may send beacon messages to apprise vehicles of local status information. Unfortunately, these messages are sent out over the control channel at various intervals. Since safety applications use the control channel, the possibility exists that beacon messages may collide with safety messages and the resultant packet loss could potentially create a safety hazard \cite{Doukha2015}. \cite{Doukha2015} suggests a number of solutions to this threat including implementing a dynamic beacon sending rate which could send fewer beacon messages under potentially dangerous scenarios and better synchronizing when beacons are sent out.
@@ -94,8 +88,6 @@
 \section{Conclusions}\label{sec:conclusions}
 	Give a summary of the different things that were discussed in this paper.
 
-% TODO (Chris): Remove this clearpage after the paper is done.
-\cleardoublepage
 \bibliographystyle{IEEEtranS}
 \bibliography{IEEEabrv,./IEEE-BSTcontrol,./CS520-Bibliography}
 
